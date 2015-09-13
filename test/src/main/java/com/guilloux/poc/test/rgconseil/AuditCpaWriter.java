@@ -18,8 +18,10 @@ public class AuditCpaWriter {
 
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		String templateFile = "/Developer/WORKSPACE/TEMPLATE-NOTE-DE-FRAIS.XLS";
-		String noteDeFraisFile = "/Developer/WORKSPACE/NOTE-DE-FRAIS-RESULT.XLS";
+		String templateFile = "/Developer/WORKSPACE/TEMPLATE-NOTE-DE-FRAIS.xlsx";
+		
+		int indexNote = 10;
+		String noteDeFraisFile = "/Developer/WORKSPACE/NOTE-DE-FRAIS-"+indexNote+".xlsx";
 		try (InputStream inp = new FileInputStream(templateFile);
 				FileOutputStream fileOut = new FileOutputStream(noteDeFraisFile)) {
 
@@ -51,23 +53,27 @@ public class AuditCpaWriter {
 				case "Transports":
 					row.getCell(4).setCellValue(ht);
 					break;
-				case "Telephone":
+				case "Telephone + Internet":
 					row.getCell(7).setCellValue(ht);
 					break;
-				case "Autres":
+				case "Fournitures de bureau":
 					row.getCell(8).setCellValue(ht);
+					break;
+				case "Logement":
+					row.getCell(9).setCellValue(ht);
 					break;					
 
 				default:
 					break;
 				}
-				row.getCell(9).setCellValue(receipt.getTva());
-				row.getCell(10).setCellValue(receipt.getTotal());
+				row.getCell(10).setCellValue(receipt.getTva());
+				row.getCell(11).setCellValue(receipt.getTotal());
 				
 			}
 			
-			sheet.getRow(3).getCell(10).setCellValue(from);
-			sheet.getRow(4).getCell(10).setCellValue(to);
+			sheet.getRow(3).getCell(11).setCellValue(from);
+			sheet.getRow(4).getCell(11).setCellValue(to);
+			sheet.getRow(3).getCell(6).setCellValue(indexNote);
 			
 			
 			// Write the output to a file

@@ -32,7 +32,7 @@ public class Invoice2GoReader {
  				receipt.setSupplier(result[5]);
  				receipt.setDescription(result[7]);
  				receipt.setTva(Double.valueOf(result[9].replace(",", ".")));
- 				receipt.setTotal(Double.valueOf(result[11].replace(",", ".")));
+ 				receipt.setTotal(Double.valueOf(result[13].replace(",", ".")));
  				list.add(receipt);
  			}
 
