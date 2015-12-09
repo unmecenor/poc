@@ -1,6 +1,5 @@
 package com.guilloux.poc.test.rgconseil;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,11 +17,10 @@ public class AuditCpaWriter {
 
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		String templateFile = "/Developer/WORKSPACE/TEMPLATE-NOTE-DE-FRAIS.xlsx";
-		
-		int indexNote = 10;
-		String noteDeFraisFile = "/Developer/WORKSPACE/NOTE-DE-FRAIS-"+indexNote+".xlsx";
-		try (InputStream inp = new FileInputStream(templateFile);
+		int indexNote = 13;
+		String noteDeFraisFile = "\\\\NAS-RGC/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-" + indexNote
+				+ ".xlsx";
+		try (InputStream inp = getClass().getResourceAsStream("TEMPLATE-NOTE-DE-FRAIS.xlsx");
 				FileOutputStream fileOut = new FileOutputStream(noteDeFraisFile)) {
 
 			Workbook wb = WorkbookFactory.create(inp);
@@ -31,21 +29,21 @@ public class AuditCpaWriter {
 			Date to = null;
 			for (int i = 0; i < list.size(); i++) {
 				Invoice2GoReceipt receipt = list.get(i);
-				Row row = sheet.getRow(i+10);
-				if(from==null || receipt.getDate().before(from)){
+				Row row = sheet.getRow(i + 10);
+				if (from == null || receipt.getDate().before(from)) {
 					from = receipt.getDate();
 				}
-				if(to==null || receipt.getDate().after(to)){
+				if (to == null || receipt.getDate().after(to)) {
 					to = receipt.getDate();
 				}
 				row.getCell(1).setCellValue(receipt.getDate());
 				StringBuilder description = new StringBuilder(receipt.getSupplier());
-				if(StringUtils.isNotBlank(receipt.getDescription())){
+				if (StringUtils.isNotBlank(receipt.getDescription())) {
 					description.append(" - ");
 					description.append(receipt.getDescription());
 				}
 				row.getCell(2).setCellValue(description.toString());
-				double ht = receipt.getTotal()-receipt.getTva();
+				double ht = receipt.getTotal() - receipt.getTva();
 				switch (receipt.getCategory()) {
 				case "Nourriture et boissons":
 					row.getCell(6).setCellValue(ht);
@@ -61,21 +59,20 @@ public class AuditCpaWriter {
 					break;
 				case "Logement":
 					row.getCell(9).setCellValue(ht);
-					break;					
+					break;
 
 				default:
 					break;
 				}
 				row.getCell(10).setCellValue(receipt.getTva());
 				row.getCell(11).setCellValue(receipt.getTotal());
-				
+
 			}
-			
+
 			sheet.getRow(3).getCell(11).setCellValue(from);
 			sheet.getRow(4).getCell(11).setCellValue(to);
 			sheet.getRow(3).getCell(6).setCellValue(indexNote);
-			
-			
+
 			// Write the output to a file
 			wb.write(fileOut);
 		} catch (IOException e) {
@@ -88,7 +85,7 @@ public class AuditCpaWriter {
 	}
 
 	public static void main(String[] args) {
-		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv("/Developer/WORKSPACE/expensesReport.CSV");
+		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv("C:/Users/user/Downloads/expensesReport.CSV");
 		new AuditCpaWriter().write(list);
 		System.out.println("terminé");
 	}

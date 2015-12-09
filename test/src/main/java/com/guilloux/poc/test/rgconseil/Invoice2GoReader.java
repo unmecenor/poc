@@ -7,9 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import com.google.common.collect.Lists;
 
@@ -52,21 +50,21 @@ public class Invoice2GoReader {
 	}
 	
 	
-	public static void main(String[] args) {
-		new Invoice2GoReader().readCsv("/Developer/WORKSPACE/expensesReport.CSV");
-		System.out.println(Double.valueOf("0.88"));
-				
-		//SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
-		SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
-		try {
-			//System.out.println(dateFormat.parse("2 Oct 2014"));
-			System.out.println(Locale.getDefault());
-			System.out.println(dateFormat.format(new Date()));
-			System.out.println(dateFormat.parse("9 déc. 2014"));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
+//	public static void main(String[] args) {
+//		new Invoice2GoReader().readCsv("C:/Users/user/Downloads/expensesReport.CSV");
+//		System.out.println(Double.valueOf("0.88"));
+//				
+//		//SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
+//		try {
+//			//System.out.println(dateFormat.parse("2 Oct 2014"));
+//			System.out.println(Locale.getDefault());
+//			System.out.println(dateFormat.format(new Date()));
+//			System.out.println(dateFormat.parse("9 déc. 2014"));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//	}
 }
