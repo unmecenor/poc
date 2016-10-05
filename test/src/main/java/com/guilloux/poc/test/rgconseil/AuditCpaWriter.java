@@ -17,7 +17,7 @@ public class AuditCpaWriter {
 
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		int indexNote = 13;
+		String indexNote = "aou16";
 		String noteDeFraisFile = "\\\\NAS-RGC/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-" + indexNote
 				+ ".xlsx";
 		try (InputStream inp = getClass().getResourceAsStream("TEMPLATE-NOTE-DE-FRAIS.xlsx");
@@ -85,7 +85,7 @@ public class AuditCpaWriter {
 	}
 
 	public static void main(String[] args) {
-		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv("C:/Users/user/Downloads/expensesReport.CSV");
+		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv("C:/Users/user/Downloads/RapportDesDépenses.CSV");
 		new AuditCpaWriter().write(list);
 		System.out.println("terminé");
 	}
