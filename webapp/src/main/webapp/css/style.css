@@ -1,0 +1,51 @@
+* {
+	font-family: Calibri;
+}
+
+h1, h3, h4, .titre-pro {
+	color: rgb(153, 153, 153);
+}
+
+h1 {
+	font-size: 1.5em;
+}
+
+h3, h2, .mission, .nom-prenom {
+	font-size: 1.3em;
+}
+
+.nom-prenom {
+	font-weight: bold;
+}
+
+.titre-pro {
+	font-size: 1.2e;
+	font-style: italic;
+}
+
+.mot-cle {
+	font-weight: bold;
+	color: blue;
+}
+
+.experience {
+	text-decoration: underline;
+}
+
+p, h6 {
+	font-size: 1em;
+}
+
+p {
+	text-align: justify;
+	backgro
+}
+
+.pleft {
+	font-size: 0.9em;
+}
+
+.bloc-experience{
+	text-align: right;
+}
+
