@@ -10,7 +10,7 @@ h1 {
 	font-size: 1.5em;
 }
 
-h3, h2, .mission, .nom-prenom {
+h3, h2, .client, .duree, .role, .nom-prenom {
 	font-size: 1.3em;
 }
 
@@ -45,7 +45,36 @@ p {
 	font-size: 0.9em;
 }
 
-.bloc-experience{
+.bloc-experience {
 	text-align: right;
 }
 
+.client:BEFORE {
+	content: url(../img/businessman-24.png);
+	padding-right: 0.5em
+}
+
+.duree:BEFORE {
+	content: url(../img/calendar-3-24.png);
+	padding-right: 0.5em
+}
+
+.role:BEFORE {
+	content: url(../img/briefcase-4-24.png);
+	padding-right: 0.5em
+}
+
+.contexte:AFTER {
+	content: url(../img/info-3-24.png);
+	padding-left: 0.5em
+}
+
+.realisation:AFTER {
+	content: url(../img/worker-24.png);
+	padding-left: 0.5em
+}
+
+.environnement:AFTER {
+	content: url(../img/settings-24-24.png);
+	padding-left: 0.5em
+}
