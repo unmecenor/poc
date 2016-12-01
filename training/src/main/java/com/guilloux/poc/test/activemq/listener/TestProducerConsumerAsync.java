@@ -13,8 +13,7 @@ public class TestProducerConsumerAsync {
 				new String[] { "com/guilloux/poc/test/activemq/listener/application-context.xml" });
 
 		System.out.println("envoi des messages");
-		JmsProducer jmsProducer = (JmsProducer) appContext
-				.getBean("jmsProducer");
+		JmsProducer jmsProducer = (JmsProducer) appContext.getBean("jmsProducer");
 		jmsProducer.envoyerMessage("1");
 		jmsProducer.envoyerMessage("2");
 		jmsProducer.envoyerMessage("3");
@@ -24,6 +23,7 @@ public class TestProducerConsumerAsync {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		appContext.close();
 	}
 
 }

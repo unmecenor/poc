@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.jms.core.JmsTemplate;
 
 public class JmsConsumer {
-	
-	private static final Logger LOGGER = LoggerFactory.getLogger(JmsConsumer.class); 
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(JmsConsumer.class);
 	private JmsTemplate jmsTemplate;
 
 	public JmsTemplate getJmsTemplate() {
@@ -22,6 +22,7 @@ public class JmsConsumer {
 			TextMessage textMessage = (TextMessage) msg;
 			if (msg != null) {
 				System.out.println("Message = " + textMessage.getText());
+				LOGGER.info("Message = " + textMessage.getText());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

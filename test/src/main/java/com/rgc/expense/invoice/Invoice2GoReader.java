@@ -1,4 +1,4 @@
-package com.guilloux.poc.test.rgconseil;
+package com.rgc.expense.invoice;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

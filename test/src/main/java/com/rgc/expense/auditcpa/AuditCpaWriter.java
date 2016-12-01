@@ -1,4 +1,4 @@
-package com.guilloux.poc.test.rgconseil;
+package com.rgc.expense.auditcpa;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,13 +13,16 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import com.rgc.expense.invoice.Invoice2GoReader;
+import com.rgc.expense.invoice.Invoice2GoReceipt;
+
 public class AuditCpaWriter {
 
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		String indexNote = "aou16";
-		String noteDeFraisFile = "\\\\NAS-RGC/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-" + indexNote
-				+ ".xlsx";
+		String indexNote = "oct16";
+		String noteDeFraisFile = "\\\\NAS-RGC-716/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-"
+				+ indexNote + ".xlsx";
 		try (InputStream inp = getClass().getResourceAsStream("TEMPLATE-NOTE-DE-FRAIS.xlsx");
 				FileOutputStream fileOut = new FileOutputStream(noteDeFraisFile)) {
 

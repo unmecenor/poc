@@ -13,15 +13,14 @@ import org.springframework.jms.core.MessageCreator;
 
 public class JmsProducer {
 
-	private static final Logger LOGGER = LoggerFactory
-			.getLogger(JmsProducer.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(JmsProducer.class);
 	private JmsTemplate jmsTemplate;
 
 	public void envoyerMessage(final String param) {
 		jmsTemplate.send(new MessageCreator() {
-			public Message createMessage(final Session session)
-					throws JMSException {
-				return session.createTextMessage("Message "+param+"|" + new Date());
+			public Message createMessage(final Session session) throws JMSException {
+				LOGGER.info("Message " + param + "|" + new Date());
+				return session.createTextMessage("Message " + param + "|" + new Date());
 			}
 		});
 	}
