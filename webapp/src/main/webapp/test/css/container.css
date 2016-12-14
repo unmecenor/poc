@@ -1,5 +1,17 @@
-@CHARSET "ISO-8859-1";
-
 #container {
 	display: flex;
+}
+
+.element:NTH-CHILD(1) {
+	flex: 2;
+	background-color: blue;
+}
+
+.element:NTH-CHILD(2) {
+	flex: 1;
+	background-color: red;
+}
+
+.element:NTH-CHILD(3) {
+	background-color: yellow;
 }

@@ -20,7 +20,7 @@ public class AuditCpaWriter {
 
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		String indexNote = "oct16";
+		String indexNote = "nov16";
 		String noteDeFraisFile = "\\\\NAS-RGC-716/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-"
 				+ indexNote + ".xlsx";
 		try (InputStream inp = getClass().getResourceAsStream("TEMPLATE-NOTE-DE-FRAIS.xlsx");
