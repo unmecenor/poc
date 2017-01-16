@@ -1,0 +1,16 @@
+body {
+	padding-top: 10px;
+}
+
+[class*="col-"], footer {
+	background-color: lightgreen;
+	border: 2px solid black;
+	border-radius: 6px;
+	line-height: 80px;
+	text-align: center;
+}
+
+.col-md-8, .col-sm-10, .col-lg-5{
+	line-height: 200px;
+}
+
