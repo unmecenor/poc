@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 import com.google.common.collect.Lists;
 
@@ -17,20 +18,20 @@ public class Invoice2GoReader {
 		List<Invoice2GoReceipt> list = Lists.newArrayList();
 		try (BufferedReader br = new BufferedReader(new FileReader(file)))
 		{
-			SimpleDateFormat dateFormat = new SimpleDateFormat("d MMM yyyy");
+			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.US);
 			
 			
 			Invoice2GoReceipt receipt;
  			String line = br.readLine();
  			while((line=br.readLine())!=null){
- 				String[] result = line.split("\"");
+ 				String[] result = line.split(";");
  				receipt = new Invoice2GoReceipt();
- 				receipt.setDate(dateFormat.parse(result[1]));
- 				receipt.setCategory(result[3]);
- 				receipt.setSupplier(result[5]);
- 				receipt.setDescription(result[7]);
- 				receipt.setTva(Double.valueOf(result[9].replace(",", ".")));
- 				receipt.setTotal(Double.valueOf(result[13].replace(",", ".")));
+ 				receipt.setDate(dateFormat.parse(result[0]));
+ 				receipt.setCategory(result[1]);
+ 				receipt.setSupplier(result[2]);
+ 				receipt.setDescription(result[3]);
+ 				receipt.setTva(Double.valueOf(result[4].replace(",", ".")));
+ 				receipt.setTotal(Double.valueOf(result[6].replace(",", ".")));
  				list.add(receipt);
  			}
 
