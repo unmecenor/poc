@@ -14,6 +14,7 @@ import { HeroService } from "./hero.service";
 import { DashBoardComponent } from "./dashboard.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { InMemoryDataService } from "./in-memory-data.service";
+import { HeroSearchService } from "./hero-search.service";
 
 
 @NgModule({
@@ -30,6 +31,6 @@ import { InMemoryDataService } from "./in-memory-data.service";
     HeroesComponent,
     DashBoardComponent],
   bootstrap: [AppComponent],
-  providers: [HeroService]
+  providers: [HeroService, HeroSearchService]
 })
 export class AppModule { }
