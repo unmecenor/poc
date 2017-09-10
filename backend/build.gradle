@@ -10,6 +10,15 @@ buildscript {
 	}
 }
 
+plugins {
+    id "com.gorylenko.gradle-git-properties" version "1.4.17"
+}
+
+gitProperties {
+    gitRepositoryRoot = new File("${project.rootDir}/..")
+    gitPropertiesDir = new File("${project.rootDir}/src/main/resources")
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
