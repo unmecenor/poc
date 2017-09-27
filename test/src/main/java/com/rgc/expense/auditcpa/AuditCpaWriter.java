@@ -18,11 +18,13 @@ import com.rgc.expense.invoice.Invoice2GoReceipt;
 
 public class AuditCpaWriter {
 
+	public static final String DIR_NOTE_DE_FRAIS = "\\\\NAS-RGC-716/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/";
+
 	public void write(List<Invoice2GoReceipt> list) {
 		// InputStream inp = new FileInputStream();
-		String indexNote = "jun17";
-		String noteDeFraisFile = "\\\\NAS-RGC-716/drive/richard.guilloux/AUDIT CPA/NOTE-DE-FRAIS/NOTE-DE-FRAIS-"
-				+ indexNote + ".xlsx";
+		String indexNote = "aou17";
+
+		String noteDeFraisFile = DIR_NOTE_DE_FRAIS + "NOTE-DE-FRAIS-" + indexNote + ".xlsx";
 		try (InputStream inp = getClass().getResourceAsStream("TEMPLATE-NOTE-DE-FRAIS.xlsx");
 				FileOutputStream fileOut = new FileOutputStream(noteDeFraisFile)) {
 
@@ -54,7 +56,7 @@ public class AuditCpaWriter {
 				case "Transports":
 					row.getCell(4).setCellValue(ht);
 					break;
-				case "Telephone + Internet":
+				case "Telephone/Internet":
 					row.getCell(7).setCellValue(ht);
 					break;
 				case "Fournitures de bureau":
@@ -88,7 +90,7 @@ public class AuditCpaWriter {
 	}
 
 	public static void main(String[] args) {
-		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv("C:/Users/user/Downloads/RapportDesDépenses.CSV");
+		List<Invoice2GoReceipt> list = new Invoice2GoReader().readCsv(DIR_NOTE_DE_FRAIS + "RapportDesDépenses.CSV");
 		new AuditCpaWriter().write(list);
 		System.out.println("terminé");
 	}
